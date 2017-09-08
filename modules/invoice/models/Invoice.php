@@ -118,7 +118,8 @@ class Invoice extends \yii\db\ActiveRecord
             array('миллиард', 'милиарда', 'миллиардов', 0),
         );
         //
-        list($rub, $kop) = explode('.', $num);
+        list($rub, $kop) = explode('.', sprintf("%015.2f", $num));
+
         $out = array();
         if (intval($rub) > 0) {
             foreach (str_split($rub, 3) as $uk => $v) { // by 3 symbols
