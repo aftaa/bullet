@@ -47,6 +47,7 @@ $config = [
         ],
     ],
     'params' => $params,
+    'language' => 'ru',
     'modules' => [
         'invoice' => 'app\modules\invoice\Module',
     ],

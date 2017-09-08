@@ -1,15 +1,42 @@
 <?php
+
+use yii\grid\GridView;
+
 $this->title = 'Просмотр счетов';
+
+/* @var $invoiceDataProvider yii\data\ActiveDataProvider */
 ?>
 <div class="invoice-default-index">
     <h1><?= $this->title ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+    <?= GridView::widget([
+        'dataProvider' => $invoiceDataProvider,
+        'columns' => [
+            'id',
+            'customer_name',
+            'address',
+            'INN',
+            'KPP',
+            'account',
+            'corr_account',
+            'BIK',
+            'bank',
+            'sum',
+            [
+                'attribute' => 'created_at',
+                'format' => ['date', 'php:d.m.Y'],
+                'label' => 'Создан'
+            ],
+            [
+                'class' => yii\grid\ActionColumn::class,
+                'template' => '{view}',
+                'buttons' => [
+                    'view' => function($url, $model, $key) {
+                        $url = "/invoice/default/html/?id=$model->id&partial=1";
+                        $a = "<a href=\"$url\" target=\"_blank\">HTML</a>";
+                        return $a;
+                    }
+                ]
+            ]
+        ]
+    ]) ?>
 </div>
