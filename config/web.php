@@ -39,16 +39,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
+    'modules' => [
+        'invoice' => 'app\modules\invoice\Module',
+    ],
 ];
 
 if (YII_ENV_DEV) {
