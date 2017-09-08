@@ -44,8 +44,11 @@ AppAsset::register($this);
         ]]);
     NavBar::end();
     ?>
+    <div class="container">
+        <?= $content ?>
+    </div>
 </div>
-
+    
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= date('Y') ?></p>
