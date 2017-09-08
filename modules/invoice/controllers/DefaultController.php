@@ -56,7 +56,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Генерирует HTML-представление чека на оплату
+     * Генерирует HTML-представление чека на оплату.
      * @param integer $id номер чека
      * @return string
      */
@@ -70,17 +70,13 @@ class DefaultController extends Controller
         // данные продавца
         $seller = Seller::findOne('1=1');
 
-        // сумма прописью
-        $sumInWords = '';
-
         // лучшим решением было бы не делать два варианта вывода,
-        // а сделать версию для печати средствами CSS (@media),
+        // а сделать версию для печати средствами CSS (@media).
         $method = $partial ? 'renderPartial' : 'render';
         return $this->$method('html', [
                 'seller' => $seller,
                 'invoice' => $invoice,
                 'isPartial' => (boolean) $partial,
-                'sumInWords' => $sumInWords
         ]);
     }
 

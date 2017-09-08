@@ -9,7 +9,6 @@ $this->title = "Счет №$invoice->id от {$invoice->getDate()}";
 /* @var $invoice app\modules\invoice\models\Invoice */
 /* @var $seller app\modules\invoice\models\Seller */
 /* @var $isPartial boolean */
-/* @var $sumInWords string */
 ?>
 
 <div class="invoice-default-index">
@@ -67,7 +66,7 @@ $this->title = "Счет №$invoice->id от {$invoice->getDate()}";
     </table>
     
     <div>
-        Сумма прописью: <?= $sumInWords ?>. Без НДС.
+        Сумма прописью: <?= $invoice->getSumInWords() ?>. Без НДС.
     </div>
     
     <br>
